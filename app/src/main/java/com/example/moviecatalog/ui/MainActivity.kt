@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.moviecatalog.R
-import com.example.moviecatalog.ui.single_movie.MovieDetailsActivity
+import com.example.moviecatalog.ui.movie_details.MovieDetailsActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

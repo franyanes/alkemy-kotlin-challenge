@@ -1,4 +1,4 @@
-package com.example.moviecatalog.ui.single_movie
+package com.example.moviecatalog.ui.movie_details
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,7 +14,7 @@ import com.example.moviecatalog.data.api.POSTER_BASE_URL
 import com.example.moviecatalog.data.api.TheMovieDBClient
 import com.example.moviecatalog.data.api.TheMovieDBInterface
 import com.example.moviecatalog.data.repository.NetworkState
-import com.example.moviecatalog.data.vo.MovieDetails
+import com.example.moviecatalog.data.vo.movie_details.MovieDetails
 
 class MovieDetailsActivity : AppCompatActivity() {
     private lateinit var viewModel: MovieDetailsViewModel
