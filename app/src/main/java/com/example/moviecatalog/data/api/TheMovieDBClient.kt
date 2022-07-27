@@ -8,9 +8,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 /* This is the Retrofit Client for the API. */
+
 const val API_KEY = "b285183ee30529222eb90854b4be71c9"
 const val BASE_URL = "https://api.themoviedb.org/3/"
 const val POSTER_BASE_URL = "https://image.tmdb.org/t/p/w342"
+
+const val FIRST_PAGE = 1
+const val POST_PER_PAGE = 20
 
 /* We want it to be an `object` or static so we don't need to instantiate it when we use it. */
 object TheMovieDBClient {
