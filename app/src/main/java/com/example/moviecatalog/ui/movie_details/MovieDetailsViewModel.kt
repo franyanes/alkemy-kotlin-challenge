@@ -6,7 +6,7 @@ import com.example.moviecatalog.data.repository.NetworkState
 import com.example.moviecatalog.data.vo.movie_details.MovieDetails
 import io.reactivex.disposables.CompositeDisposable
 
-class MovieDetailsViewModel(private val movieRepository: MovieDetailsRepository, movieId: Int): ViewModel() {
+class MovieDetailsViewModel(private val movieRepository: MovieDetailsRepository, movieId: Int) : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
     /* We use `lazy` so get the movie details when we need them and not when we instantiate the class.
     * It would work without `lazy` regardless, but we use it for better performance. */
