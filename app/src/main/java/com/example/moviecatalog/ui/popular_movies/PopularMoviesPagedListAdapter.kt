@@ -5,7 +5,6 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.paging.PagedListAdapter
@@ -15,11 +14,10 @@ import com.bumptech.glide.Glide
 import com.example.moviecatalog.R
 import com.example.moviecatalog.data.api.POSTER_BASE_URL
 import com.example.moviecatalog.data.repository.NetworkState
-import com.example.moviecatalog.data.vo.popular_movies.PopularMovieItem
+import com.example.moviecatalog.data.vo.popular_movies.PopularMoviesItem
 import com.example.moviecatalog.ui.movie_details.MovieDetailsActivity
-import org.w3c.dom.Text
 
-class PopularMoviesPagedListAdapter(public val context: Context) : PagedListAdapter<PopularMovieItem, RecyclerView.ViewHolder>(
+class PopularMoviesPagedListAdapter(public val context: Context) : PagedListAdapter<PopularMoviesItem, RecyclerView.ViewHolder>(
     MoviesDiffCallback()
 ) {
     val MOVIE_VIEW_TYPE = 1
@@ -82,24 +80,24 @@ class PopularMoviesPagedListAdapter(public val context: Context) : PagedListAdap
         }
     }
 
-    class MoviesDiffCallback : DiffUtil.ItemCallback<PopularMovieItem>() {
+    class MoviesDiffCallback : DiffUtil.ItemCallback<PopularMoviesItem>() {
         override fun areItemsTheSame(
-            oldItem: PopularMovieItem,
-            newItem: PopularMovieItem
+            oldItem: PopularMoviesItem,
+            newItem: PopularMoviesItem
         ): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: PopularMovieItem,
-            newItem: PopularMovieItem
+            oldItem: PopularMoviesItem,
+            newItem: PopularMoviesItem
         ): Boolean {
             return oldItem == newItem
         }
     }
 
     class MoviesItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(movie: PopularMovieItem?, context: Context) {
+        fun bind(movie: PopularMoviesItem?, context: Context) {
             itemView.findViewById<TextView>(R.id.title).text = movie?.title
             val moviePosterURL = POSTER_BASE_URL + movie?.posterPath
             Glide.with(itemView.context)

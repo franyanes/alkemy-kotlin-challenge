@@ -3,7 +3,7 @@ package com.example.moviecatalog.data.vo.popular_movies
 
 import com.google.gson.annotations.SerializedName
 
-data class PopularMovieItem(
+data class PopularMoviesItem(
     @SerializedName("adult")
     val adult: Boolean,
     @SerializedName("backdrop_path")

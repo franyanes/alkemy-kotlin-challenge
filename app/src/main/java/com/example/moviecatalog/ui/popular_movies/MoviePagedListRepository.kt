@@ -9,14 +9,14 @@ import com.example.moviecatalog.data.api.TheMovieDBInterface
 import com.example.moviecatalog.data.repository.MovieListDataSource
 import com.example.moviecatalog.data.repository.MovieListDataSourceFactory
 import com.example.moviecatalog.data.repository.NetworkState
-import com.example.moviecatalog.data.vo.popular_movies.PopularMovieItem
+import com.example.moviecatalog.data.vo.popular_movies.PopularMoviesItem
 import io.reactivex.disposables.CompositeDisposable
 
 class MoviePagedListRepository(private val apiService: TheMovieDBInterface) {
-    lateinit var moviePagedList: LiveData<PagedList<PopularMovieItem>>
+    lateinit var moviePagedList: LiveData<PagedList<PopularMoviesItem>>
     lateinit var moviesDataSourceFactory: MovieListDataSourceFactory
 
-    fun fetchMoviePagedList(compositeDisposable: CompositeDisposable): LiveData<PagedList<PopularMovieItem>> {
+    fun fetchMoviePagedList(compositeDisposable: CompositeDisposable): LiveData<PagedList<PopularMoviesItem>> {
         moviesDataSourceFactory = MovieListDataSourceFactory(apiService, compositeDisposable)
         val config: PagedList.Config = PagedList.Config.Builder() // This is for configuring the page list
             .setEnablePlaceholders(false)
