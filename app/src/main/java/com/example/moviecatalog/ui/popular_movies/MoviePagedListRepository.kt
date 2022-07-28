@@ -6,18 +6,18 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.example.moviecatalog.data.api.POST_PER_PAGE
 import com.example.moviecatalog.data.api.TheMovieDBInterface
-import com.example.moviecatalog.data.repository.MovieListDataSource
-import com.example.moviecatalog.data.repository.MovieListDataSourceFactory
+import com.example.moviecatalog.data.repository.MoviesListDataSource
+import com.example.moviecatalog.data.repository.MoviesListDataSourceFactory
 import com.example.moviecatalog.data.repository.NetworkState
 import com.example.moviecatalog.data.vo.popular_movies.PopularMoviesItem
 import io.reactivex.disposables.CompositeDisposable
 
 class MoviePagedListRepository(private val apiService: TheMovieDBInterface) {
     lateinit var moviePagedList: LiveData<PagedList<PopularMoviesItem>>
-    lateinit var moviesDataSourceFactory: MovieListDataSourceFactory
+    lateinit var moviesDataSourceFactory: MoviesListDataSourceFactory
 
     fun fetchMoviePagedList(compositeDisposable: CompositeDisposable): LiveData<PagedList<PopularMoviesItem>> {
-        moviesDataSourceFactory = MovieListDataSourceFactory(apiService, compositeDisposable)
+        moviesDataSourceFactory = MoviesListDataSourceFactory(apiService, compositeDisposable)
         val config: PagedList.Config = PagedList.Config.Builder() // This is for configuring the page list
             .setEnablePlaceholders(false)
             .setPageSize(POST_PER_PAGE)
@@ -27,8 +27,8 @@ class MoviePagedListRepository(private val apiService: TheMovieDBInterface) {
     }
 
     fun getNetworkState(): LiveData<NetworkState> {
-        return Transformations.switchMap<MovieListDataSource, NetworkState>(
-            moviesDataSourceFactory.moviesLiveDataSource, MovieListDataSource::networkState
+        return Transformations.switchMap<MoviesListDataSource, NetworkState>(
+            moviesDataSourceFactory.moviesLiveDataSource, MoviesListDataSource::networkState
         )
     }
 }
