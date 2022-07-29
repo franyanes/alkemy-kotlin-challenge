@@ -37,7 +37,7 @@ class MoviesListDataSource(
         )
     }
 
-    override fun loadBefore(
+    override fun loadAfter(
         params: LoadParams<Int>,
         callback: LoadCallback<Int, PopularMoviesItem>
     ) {
@@ -62,7 +62,7 @@ class MoviesListDataSource(
         )
     }
 
-    override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, PopularMoviesItem>) {
+    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, PopularMoviesItem>) {
         /* Do nothing. */
     }
 }
