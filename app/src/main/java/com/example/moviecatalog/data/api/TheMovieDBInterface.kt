@@ -18,5 +18,5 @@ interface TheMovieDBInterface {
     /* Single is one type of observable in Reactivex or RxJava.
     *  It emits a single value (instead of multiple), or an error. */
     @GET("movie/{movie_id}")
-    fun getMovieDetails(@Path("movie_id") id: Int): Single<MovieDetails>
+    fun getMovieDetails(@Path("movie_id")id: Int): Single<MovieDetails>
 }
