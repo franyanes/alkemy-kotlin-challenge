@@ -35,15 +35,17 @@ class MovieDetailsActivity : AppCompatActivity() {
         })
         viewModel.networkState.observe(this, Observer {
             findViewById<ProgressBar>(R.id.progress_bar).visibility =
-                if (it == NetworkState.LOADING)
+                if (it == NetworkState.LOADING) {
                     View.VISIBLE
-                else
+                } else {
                     View.GONE
+                }
             findViewById<TextView>(R.id.txt_connection_error).visibility =
-                if (it == NetworkState.ERROR)
+                if (it == NetworkState.ERROR) {
                     View.VISIBLE
-                else
+                } else {
                     View.GONE
+                }
         })
     }
 
