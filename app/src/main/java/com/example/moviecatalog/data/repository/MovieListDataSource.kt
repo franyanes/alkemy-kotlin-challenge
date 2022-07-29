@@ -9,7 +9,7 @@ import com.example.moviecatalog.data.vo.popular_movies.PopularMoviesItem
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class MoviesListDataSource(
+class MovieListDataSource(
     private val apiService: TheMovieDBInterface,
     private val compositeDisposable: CompositeDisposable
 ): PageKeyedDataSource<Int, PopularMoviesItem>() {

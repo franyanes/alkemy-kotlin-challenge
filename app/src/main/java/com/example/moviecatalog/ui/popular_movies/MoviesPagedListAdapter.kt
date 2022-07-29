@@ -17,7 +17,7 @@ import com.example.moviecatalog.data.repository.NetworkState
 import com.example.moviecatalog.data.vo.popular_movies.PopularMoviesItem
 import com.example.moviecatalog.ui.movie_details.MovieDetailsActivity
 
-class PopularMoviesPagedListAdapter(public val context: Context) : PagedListAdapter<PopularMoviesItem, RecyclerView.ViewHolder>(
+class MoviesPagedListAdapter(public val context: Context) : PagedListAdapter<PopularMoviesItem, RecyclerView.ViewHolder>(
     MoviesDiffCallback()
 ) {
     val MOVIE_VIEW_TYPE = 1

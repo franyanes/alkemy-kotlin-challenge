@@ -26,12 +26,12 @@ class MainActivity : AppCompatActivity() {
         val apiService: TheMovieDBInterface = TheMovieDBClient.getClient()
         moviePagedListRepository = MoviesPagedListRepository(apiService)
         viewModel = getViewModel()
-        val popularMoviesPagedListAdapter = PopularMoviesPagedListAdapter(this)
+        val moviesPagedListAdapter = MoviesPagedListAdapter(this)
         val gridLayoutManager = GridLayoutManager(this, 3)
         gridLayoutManager.spanSizeLookup = object: GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
-                val viewType: Int = popularMoviesPagedListAdapter.getItemViewType(position)
-                return if (viewType == popularMoviesPagedListAdapter.MOVIE_VIEW_TYPE) {
+                val viewType: Int = moviesPagedListAdapter.getItemViewType(position)
+                return if (viewType == moviesPagedListAdapter.MOVIE_VIEW_TYPE) {
                     1
                 } else {
                     3
@@ -40,9 +40,9 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<RecyclerView>(R.id.rv_main_movie_list).layoutManager = gridLayoutManager
         findViewById<RecyclerView>(R.id.rv_main_movie_list).setHasFixedSize(true)
-        findViewById<RecyclerView>(R.id.rv_main_movie_list).adapter = popularMoviesPagedListAdapter
+        findViewById<RecyclerView>(R.id.rv_main_movie_list).adapter = moviesPagedListAdapter
         viewModel.moviesPagedList.observe(this, Observer{
-            popularMoviesPagedListAdapter.submitList(it)
+            moviesPagedListAdapter.submitList(it)
         })
         viewModel.networkState.observe(this, Observer {
             findViewById<ProgressBar>(R.id.pb_main).visibility = if (
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 View.GONE
             }
             if (!viewModel.listIsEmpty()) {
-                popularMoviesPagedListAdapter.setNetworkState(it)
+                moviesPagedListAdapter.setNetworkState(it)
             }
         })
     }
