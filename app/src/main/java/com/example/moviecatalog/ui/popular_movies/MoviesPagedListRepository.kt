@@ -12,7 +12,7 @@ import com.example.moviecatalog.data.repository.NetworkState
 import com.example.moviecatalog.data.vo.popular_movies.PopularMoviesItem
 import io.reactivex.disposables.CompositeDisposable
 
-class MoviePagedListRepository(private val apiService: TheMovieDBInterface) {
+class MoviesPagedListRepository(private val apiService: TheMovieDBInterface) {
     lateinit var moviePagedList: LiveData<PagedList<PopularMoviesItem>>
     lateinit var moviesDataSourceFactory: MoviesListDataSourceFactory
 

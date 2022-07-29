@@ -1,10 +1,8 @@
 package com.example.moviecatalog.ui.popular_movies
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.lifecycle.Observer
@@ -17,17 +15,16 @@ import com.example.moviecatalog.R
 import com.example.moviecatalog.data.api.TheMovieDBClient
 import com.example.moviecatalog.data.api.TheMovieDBInterface
 import com.example.moviecatalog.data.repository.NetworkState
-import com.example.moviecatalog.ui.movie_details.MovieDetailsActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainActivityViewModel
-    lateinit var moviePagedListRepository: MoviePagedListRepository
+    lateinit var moviePagedListRepository: MoviesPagedListRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val apiService: TheMovieDBInterface = TheMovieDBClient.getClient()
-        moviePagedListRepository = MoviePagedListRepository(apiService)
+        moviePagedListRepository = MoviesPagedListRepository(apiService)
         viewModel = getViewModel()
         val popularMoviesPagedListAdapter = PopularMoviesPagedListAdapter(this)
         val gridLayoutManager = GridLayoutManager(this, 3)
