@@ -34,13 +34,13 @@ class MovieDetailsActivity : AppCompatActivity() {
             bindUI(it) // `it` is `movieDetails` returned data.
         })
         viewModel.networkState.observe(this, Observer {
-            findViewById<ProgressBar>(R.id.progress_bar).visibility =
+            findViewById<ProgressBar>(R.id.pb_details).visibility =
                 if (it == NetworkState.LOADING) {
                     View.VISIBLE
                 } else {
                     View.GONE
                 }
-            findViewById<TextView>(R.id.txt_connection_error).visibility =
+            findViewById<TextView>(R.id.tv_details_connection_error).visibility =
                 if (it == NetworkState.ERROR) {
                     View.VISIBLE
                 } else {
@@ -53,8 +53,8 @@ class MovieDetailsActivity : AppCompatActivity() {
         val moviePosterURL = POSTER_BASE_URL + it.posterPath // We load the movie poster.
         Glide.with(this)
             .load(moviePosterURL)
-            .into(findViewById(R.id.poster))
-        findViewById<TextView>(R.id.title).text = it.title
+            .into(findViewById(R.id.iv_details_poster))
+        findViewById<TextView>(R.id.tv_details_title).text = it.title
     }
 
     /* This is ViewModel Provider Factory for MovieDetailsViewModel. */

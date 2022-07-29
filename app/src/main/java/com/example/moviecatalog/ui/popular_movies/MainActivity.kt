@@ -38,21 +38,21 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        findViewById<RecyclerView>(R.id.rv_movie_list).layoutManager = gridLayoutManager
-        findViewById<RecyclerView>(R.id.rv_movie_list).setHasFixedSize(true)
-        findViewById<RecyclerView>(R.id.rv_movie_list).adapter = popularMoviesPagedListAdapter
+        findViewById<RecyclerView>(R.id.rv_main_movie_list).layoutManager = gridLayoutManager
+        findViewById<RecyclerView>(R.id.rv_main_movie_list).setHasFixedSize(true)
+        findViewById<RecyclerView>(R.id.rv_main_movie_list).adapter = popularMoviesPagedListAdapter
         viewModel.moviesPagedList.observe(this, Observer{
             popularMoviesPagedListAdapter.submitList(it)
         })
         viewModel.networkState.observe(this, Observer {
-            findViewById<ProgressBar>(R.id.progress_bar).visibility = if (
+            findViewById<ProgressBar>(R.id.pb_main).visibility = if (
                 viewModel.listIsEmpty() && it == NetworkState.LOADING
             ) {
                 View.VISIBLE
             } else {
                 View.GONE
             }
-            findViewById<TextView>(R.id.txt_connection_error).visibility = if (
+            findViewById<TextView>(R.id.txt_main_connection_error).visibility = if (
                 viewModel.listIsEmpty() && it == NetworkState.ERROR
             ) {
                 View.VISIBLE

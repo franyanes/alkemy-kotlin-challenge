@@ -98,11 +98,11 @@ class PopularMoviesPagedListAdapter(public val context: Context) : PagedListAdap
 
     class MoviesItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(movie: PopularMoviesItem?, context: Context) {
-            itemView.findViewById<TextView>(R.id.title).text = movie?.title
+            itemView.findViewById<TextView>(R.id.tv_card_item_title).text = movie?.title
             val moviePosterURL = POSTER_BASE_URL + movie?.posterPath
             Glide.with(itemView.context)
                 .load(moviePosterURL)
-                .into(itemView.findViewById(R.id.poster))
+                .into(itemView.findViewById(R.id.iv_card_item_poster))
             itemView.setOnClickListener {
                 val intent = Intent(context, MovieDetailsActivity::class.java)
                 intent.putExtra("id", movie?.id)
@@ -114,18 +114,18 @@ class PopularMoviesPagedListAdapter(public val context: Context) : PagedListAdap
     class MoviesItemNetworkStateViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(networkState: NetworkState?) {
             if (networkState != null && networkState == NetworkState.LOADING) {
-                itemView.findViewById<ProgressBar>(R.id.progress_bar).visibility = View.VISIBLE
+                itemView.findViewById<ProgressBar>(R.id.pb_network).visibility = View.VISIBLE
             } else {
-                itemView.findViewById<ProgressBar>(R.id.progress_bar).visibility = View.GONE
+                itemView.findViewById<ProgressBar>(R.id.pb_network).visibility = View.GONE
             }
             if (
                 networkState != null
                 && (networkState == NetworkState.ERROR || networkState == NetworkState.EOL)
             ) {
-                itemView.findViewById<TextView>(R.id.txt_error).text = networkState.msg
-                itemView.findViewById<TextView>(R.id.txt_error).visibility = View.VISIBLE
+                itemView.findViewById<TextView>(R.id.tv_network_error).text = networkState.msg
+                itemView.findViewById<TextView>(R.id.tv_network_error).visibility = View.VISIBLE
             } else {
-                itemView.findViewById<TextView>(R.id.txt_error).visibility = View.GONE
+                itemView.findViewById<TextView>(R.id.tv_network_error).visibility = View.GONE
             }
         }
     }
