@@ -27,7 +27,7 @@ class MoviePagedListRepository(private val apiService: TheMovieDBInterface) {
     }
 
     fun getNetworkState(): LiveData<NetworkState> {
-        return Transformations.switchMap<MoviesListDataSource, NetworkState>(
+        return Transformations.switchMap(
             moviesDataSourceFactory.moviesLiveDataSource, MoviesListDataSource::networkState
         )
     }
