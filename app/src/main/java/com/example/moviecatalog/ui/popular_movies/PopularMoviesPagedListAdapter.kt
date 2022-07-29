@@ -65,10 +65,10 @@ class PopularMoviesPagedListAdapter(public val context: Context) : PagedListAdap
     }
 
     override fun getItemCount(): Int {
-        return if (hasExtraRow()) {
-            super.getItemCount() + 1
+        return super.getItemCount() + if (hasExtraRow()) {
+            1
         } else {
-            super.getItemCount() + 0
+            0
         }
     }
 
