@@ -75,14 +75,14 @@ class MovieDetailsActivity : AppCompatActivity() {
     /* This is ViewModel Provider Factory for MovieDetailsViewModel. */
     private fun getViewModel(movieId: Int): MovieDetailsViewModel {
         return ViewModelProvider(this, object: ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return MovieDetailsViewModel(movieDetailsRepository, movieId) as T
             }
         })[MovieDetailsViewModel::class.java]
     }
 
     private fun getConcatenatedGenresFromResponse(it: MovieDetails): String {
-        var genreList = mutableListOf<String>()
+        val genreList = mutableListOf<String>()
         for (genre in it.genres) {
             genreList.add(genre.name)
         }
