@@ -1,16 +1,13 @@
 package com.example.moviecatalog.ui.movie_details
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.ProgressBar
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.example.moviecatalog.R
 import com.example.moviecatalog.data.api.POSTER_BASE_URL
 import com.example.moviecatalog.data.api.TheMovieDBClient
 import com.example.moviecatalog.data.api.TheMovieDBInterface
@@ -18,8 +15,6 @@ import com.example.moviecatalog.data.repository.NetworkState
 import com.example.moviecatalog.data.vo.movie_details.MovieDetails
 import com.example.moviecatalog.databinding.ActivityMovieDetailsBinding
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 class MovieDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMovieDetailsBinding
@@ -71,7 +66,7 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     /* This is ViewModel Provider Factory for MovieDetailsViewModel. */
     private fun getViewModel(movieId: Int): MovieDetailsViewModel {
-        return ViewModelProvider(this, object: ViewModelProvider.Factory {
+        return ViewModelProvider(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return MovieDetailsViewModel(movieDetailsRepository, movieId) as T
             }
@@ -89,7 +84,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     @SuppressLint("NewApi")
     private fun getFormattedDateFromResponse(it: MovieDetails): String {
         val date = LocalDate.parse(it.releaseDate)
-        return date.month.toString().lowercase().replaceFirstChar{ it.uppercase() } + " " +
+        return date.month.toString().lowercase().replaceFirstChar { it.uppercase() } + " " +
                 date.dayOfMonth.toString() + ", " +
                 date.year.toString()
     }
