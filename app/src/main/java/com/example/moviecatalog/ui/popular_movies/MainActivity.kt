@@ -15,14 +15,18 @@ import com.example.moviecatalog.R
 import com.example.moviecatalog.data.api.TheMovieDBClient
 import com.example.moviecatalog.data.api.TheMovieDBInterface
 import com.example.moviecatalog.data.repository.NetworkState
+import com.example.moviecatalog.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: MainActivityViewModel
     lateinit var moviePagedListRepository: MoviesPagedListRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
         val apiService: TheMovieDBInterface = TheMovieDBClient.getClient()
         moviePagedListRepository = MoviesPagedListRepository(apiService)
         viewModel = getViewModel()
@@ -38,21 +42,21 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        findViewById<RecyclerView>(R.id.rv_main_movie_list).layoutManager = gridLayoutManager
-        findViewById<RecyclerView>(R.id.rv_main_movie_list).setHasFixedSize(true)
-        findViewById<RecyclerView>(R.id.rv_main_movie_list).adapter = moviesPagedListAdapter
+        binding.rvMainMovieList.layoutManager = gridLayoutManager
+        binding.rvMainMovieList.setHasFixedSize(true)
+        binding.rvMainMovieList.adapter = moviesPagedListAdapter
         viewModel.moviesPagedList.observe(this, Observer{
             moviesPagedListAdapter.submitList(it)
         })
         viewModel.networkState.observe(this, Observer {
-            findViewById<ProgressBar>(R.id.pb_main).visibility = if (
+            binding.pbMain.visibility = if (
                 viewModel.listIsEmpty() && it == NetworkState.LOADING
             ) {
                 View.VISIBLE
             } else {
                 View.GONE
             }
-            findViewById<TextView>(R.id.txt_main_connection_error).visibility = if (
+            binding.txtMainConnectionError.visibility = if (
                 viewModel.listIsEmpty() && it == NetworkState.ERROR
             ) {
                 View.VISIBLE

@@ -16,17 +16,23 @@ import com.example.moviecatalog.data.api.TheMovieDBClient
 import com.example.moviecatalog.data.api.TheMovieDBInterface
 import com.example.moviecatalog.data.repository.NetworkState
 import com.example.moviecatalog.data.vo.movie_details.MovieDetails
+import com.example.moviecatalog.databinding.ActivityMainBinding
+import com.example.moviecatalog.databinding.ActivityMainBinding.inflate
+import com.example.moviecatalog.databinding.ActivityMovieDetailsBinding
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 
 class MovieDetailsActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMovieDetailsBinding
     private lateinit var viewModel: MovieDetailsViewModel
     private lateinit var movieDetailsRepository: MovieDetailsRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movie_details)
+        binding = ActivityMovieDetailsBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         val movieId: Int = intent.getIntExtra("id", 0)
         val apiService: TheMovieDBInterface = TheMovieDBClient.getClient()
@@ -38,13 +44,13 @@ class MovieDetailsActivity : AppCompatActivity() {
             bindUI(it) // `it` is `movieDetails` returned data.
         })
         viewModel.networkState.observe(this, Observer {
-            findViewById<ProgressBar>(R.id.pb_details).visibility =
+            binding.pbDetails.visibility =
                 if (it == NetworkState.LOADING) {
                     View.VISIBLE
                 } else {
                     View.GONE
                 }
-            findViewById<TextView>(R.id.tv_details_connection_error).visibility =
+            binding.tvDetailsConnectionError.visibility =
                 if (it == NetworkState.ERROR) {
                     View.VISIBLE
                 } else {
@@ -57,13 +63,13 @@ class MovieDetailsActivity : AppCompatActivity() {
         val moviePosterURL = POSTER_BASE_URL + it.posterPath // We load the movie poster.
         Glide.with(this)
             .load(moviePosterURL)
-            .into(findViewById(R.id.iv_details_poster))
-        findViewById<TextView>(R.id.tv_details_title).text = it.title
-        findViewById<TextView>(R.id.tv_details_overview).text = it.overview
-        findViewById<TextView>(R.id.tv_details_release_date).text = getFormattedDateFromResponse(it)
-        findViewById<TextView>(R.id.tv_details_genre).text = getConcatenatedGenresFromResponse(it)
-        findViewById<TextView>(R.id.tv_details_language).text = it.spokenLanguages.first().englishName
-        findViewById<TextView>(R.id.tv_details_rating).text = it.voteAverage.toString().take(3)
+            .into(binding.ivDetailsPoster)
+        binding.tvDetailsTitle.text = it.title
+        binding.tvDetailsOverview.text = it.overview
+        binding.tvDetailsReleaseDate.text = getFormattedDateFromResponse(it)
+        binding.tvDetailsGenre.text = getConcatenatedGenresFromResponse(it)
+        binding.tvDetailsLanguage.text = it.spokenLanguages.first().englishName
+        binding.tvDetailsRating.text = it.voteAverage.toString().take(3)
     }
 
     /* This is ViewModel Provider Factory for MovieDetailsViewModel. */
