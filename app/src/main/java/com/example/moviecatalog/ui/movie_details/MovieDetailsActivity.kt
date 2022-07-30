@@ -31,8 +31,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMovieDetailsBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         val movieId: Int = intent.getIntExtra("id", 0)
         val apiService: TheMovieDBInterface = TheMovieDBClient.getClient()
