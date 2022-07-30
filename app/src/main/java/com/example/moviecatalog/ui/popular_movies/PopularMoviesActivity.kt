@@ -3,28 +3,24 @@ package com.example.moviecatalog.ui.popular_movies
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.moviecatalog.R
 import com.example.moviecatalog.data.api.TheMovieDBClient
 import com.example.moviecatalog.data.api.TheMovieDBInterface
 import com.example.moviecatalog.data.repository.NetworkState
-import com.example.moviecatalog.databinding.ActivityMainBinding
+import com.example.moviecatalog.databinding.ActivityPopularMoviesBinding
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: MainActivityViewModel
+class PopularMoviesActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityPopularMoviesBinding
+    private lateinit var viewModel: PopularMoviesViewModel
     lateinit var moviePagedListRepository: MoviesPagedListRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityPopularMoviesBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val apiService: TheMovieDBInterface = TheMovieDBClient.getClient()
         moviePagedListRepository = MoviesPagedListRepository(apiService)
@@ -68,11 +64,11 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun getViewModel(): MainActivityViewModel {
+    private fun getViewModel(): PopularMoviesViewModel {
         return ViewModelProviders.of(this, object: ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return MainActivityViewModel(moviePagedListRepository) as T
+                return PopularMoviesViewModel(moviePagedListRepository) as T
             }
-        })[MainActivityViewModel::class.java]
+        })[PopularMoviesViewModel::class.java]
     }
 }

@@ -7,7 +7,7 @@ import com.example.moviecatalog.data.repository.NetworkState
 import com.example.moviecatalog.data.vo.popular_movies.PopularMoviesItem
 import io.reactivex.disposables.CompositeDisposable
 
-class MainActivityViewModel(private val movieRepository: MoviesPagedListRepository) : ViewModel() {
+class PopularMoviesViewModel(private val movieRepository: MoviesPagedListRepository) : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
     val moviesPagedList: LiveData<PagedList<PopularMoviesItem>> by lazy {
         movieRepository.fetchMoviePagedList(compositeDisposable)

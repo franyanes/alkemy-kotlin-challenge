@@ -16,8 +16,6 @@ import com.example.moviecatalog.data.api.TheMovieDBClient
 import com.example.moviecatalog.data.api.TheMovieDBInterface
 import com.example.moviecatalog.data.repository.NetworkState
 import com.example.moviecatalog.data.vo.movie_details.MovieDetails
-import com.example.moviecatalog.databinding.ActivityMainBinding
-import com.example.moviecatalog.databinding.ActivityMainBinding.inflate
 import com.example.moviecatalog.databinding.ActivityMovieDetailsBinding
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter

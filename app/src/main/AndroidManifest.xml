@@ -19,7 +19,7 @@
             android:name=".ui.movie_details.MovieDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.popular_movies.MainActivity"
+            android:name=".ui.popular_movies.PopularMoviesActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
