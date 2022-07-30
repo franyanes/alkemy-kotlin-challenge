@@ -1,5 +1,6 @@
 package com.example.moviecatalog.ui.movie_details
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -15,6 +16,9 @@ import com.example.moviecatalog.data.api.TheMovieDBClient
 import com.example.moviecatalog.data.api.TheMovieDBInterface
 import com.example.moviecatalog.data.repository.NetworkState
 import com.example.moviecatalog.data.vo.movie_details.MovieDetails
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class MovieDetailsActivity : AppCompatActivity() {
     private lateinit var viewModel: MovieDetailsViewModel
@@ -55,6 +59,11 @@ class MovieDetailsActivity : AppCompatActivity() {
             .load(moviePosterURL)
             .into(findViewById(R.id.iv_details_poster))
         findViewById<TextView>(R.id.tv_details_title).text = it.title
+        findViewById<TextView>(R.id.tv_details_overview).text = it.overview
+        findViewById<TextView>(R.id.tv_details_release_date).text = getFormattedDateFromResponse(it)
+        findViewById<TextView>(R.id.tv_details_genre).text = getConcatenatedGenresFromResponse(it)
+        findViewById<TextView>(R.id.tv_details_language).text = it.spokenLanguages.first().englishName
+        findViewById<TextView>(R.id.tv_details_rating).text = it.voteAverage.toString().take(3)
     }
 
     /* This is ViewModel Provider Factory for MovieDetailsViewModel. */
@@ -64,5 +73,21 @@ class MovieDetailsActivity : AppCompatActivity() {
                 return MovieDetailsViewModel(movieDetailsRepository, movieId) as T
             }
         })[MovieDetailsViewModel::class.java]
+    }
+
+    private fun getConcatenatedGenresFromResponse(it: MovieDetails): String {
+        var genreList = mutableListOf<String>()
+        for (genre in it.genres) {
+            genreList.add(genre.name)
+        }
+        return genreList.joinToString(", ")
+    }
+
+    @SuppressLint("NewApi")
+    private fun getFormattedDateFromResponse(it: MovieDetails): String {
+        val date = LocalDate.parse(it.releaseDate)
+        return date.month.toString().lowercase().replaceFirstChar{ it.uppercase() } + " " +
+                date.dayOfMonth.toString() + ", " +
+                date.year.toString()
     }
 }
