@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun getViewModel(): MainActivityViewModel {
         return ViewModelProviders.of(this, object: ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return MainActivityViewModel(moviePagedListRepository) as T
             }
         })[MainActivityViewModel::class.java]
