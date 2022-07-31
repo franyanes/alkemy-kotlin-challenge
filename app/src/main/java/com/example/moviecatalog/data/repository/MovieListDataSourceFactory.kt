@@ -3,7 +3,7 @@ package com.example.moviecatalog.data.repository
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import com.example.moviecatalog.data.api.TheMovieDBInterface
-import com.example.moviecatalog.data.vo.popular_movies.PopularMoviesItem
+import com.example.moviecatalog.data.dto.popular_movies.PopularMoviesItem
 import io.reactivex.disposables.CompositeDisposable
 
 class MovieListDataSourceFactory(

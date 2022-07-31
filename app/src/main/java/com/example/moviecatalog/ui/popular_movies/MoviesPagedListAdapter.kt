@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide
 import com.example.moviecatalog.R
 import com.example.moviecatalog.data.api.POSTER_BASE_URL
 import com.example.moviecatalog.data.repository.NetworkState
-import com.example.moviecatalog.data.vo.popular_movies.PopularMoviesItem
+import com.example.moviecatalog.data.dto.popular_movies.PopularMoviesItem
 import com.example.moviecatalog.ui.movie_details.MovieDetailsActivity
 
 class MoviesPagedListAdapter(private val context: Context) : PagedListAdapter<PopularMoviesItem, RecyclerView.ViewHolder>(

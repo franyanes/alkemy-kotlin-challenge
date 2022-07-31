@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import com.example.moviecatalog.data.api.FIRST_PAGE
 import com.example.moviecatalog.data.api.TheMovieDBInterface
-import com.example.moviecatalog.data.vo.popular_movies.PopularMoviesItem
+import com.example.moviecatalog.data.dto.popular_movies.PopularMoviesItem
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 

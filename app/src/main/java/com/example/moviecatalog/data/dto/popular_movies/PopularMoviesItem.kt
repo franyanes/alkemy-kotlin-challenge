@@ -1,4 +1,4 @@
-package com.example.moviecatalog.data.vo.popular_movies
+package com.example.moviecatalog.data.dto.popular_movies
 
 
 import com.google.gson.annotations.SerializedName

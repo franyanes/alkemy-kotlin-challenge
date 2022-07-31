@@ -12,7 +12,7 @@ import com.example.moviecatalog.data.api.POSTER_BASE_URL
 import com.example.moviecatalog.data.api.TheMovieDBClient
 import com.example.moviecatalog.data.api.TheMovieDBInterface
 import com.example.moviecatalog.data.repository.NetworkState
-import com.example.moviecatalog.data.vo.movie_details.MovieDetails
+import com.example.moviecatalog.data.dto.movie_details.MovieDetails
 import com.example.moviecatalog.databinding.ActivityMovieDetailsBinding
 import java.time.LocalDate
 

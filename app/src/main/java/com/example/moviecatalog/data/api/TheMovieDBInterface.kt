@@ -1,7 +1,7 @@
 package com.example.moviecatalog.data.api
 
-import com.example.moviecatalog.data.vo.movie_details.MovieDetails
-import com.example.moviecatalog.data.vo.popular_movies.PopularMovies
+import com.example.moviecatalog.data.dto.movie_details.MovieDetails
+import com.example.moviecatalog.data.dto.popular_movies.PopularMovies
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path

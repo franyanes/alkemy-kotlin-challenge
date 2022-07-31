@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import com.example.moviecatalog.data.api.TheMovieDBInterface
 import com.example.moviecatalog.data.repository.MovieDetailsNetworkDataSource
 import com.example.moviecatalog.data.repository.NetworkState
-import com.example.moviecatalog.data.vo.movie_details.MovieDetails
+import com.example.moviecatalog.data.dto.movie_details.MovieDetails
 import io.reactivex.disposables.CompositeDisposable
 
 /* This class seems like an extra step, but it's created in case we want to cache the data in the future. */

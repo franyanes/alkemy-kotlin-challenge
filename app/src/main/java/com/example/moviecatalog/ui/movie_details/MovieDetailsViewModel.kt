@@ -3,7 +3,7 @@ package com.example.moviecatalog.ui.movie_details
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.moviecatalog.data.repository.NetworkState
-import com.example.moviecatalog.data.vo.movie_details.MovieDetails
+import com.example.moviecatalog.data.dto.movie_details.MovieDetails
 import io.reactivex.disposables.CompositeDisposable
 
 class MovieDetailsViewModel(private val movieRepository: MovieDetailsRepository, movieId: Int) : ViewModel() {
