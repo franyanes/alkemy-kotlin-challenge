@@ -16,12 +16,12 @@ The user can go up and down in the view when searching.
 
 To select a movie, simply press on it.
 
-<img src="https://github.com/franyanes/alkemy-kotlin-challenge/blob/main/gifs/main_activity_view_v2.gif" style="zoom:50%;" />
+<img src="https://github.com/franyanes/alkemy-kotlin-challenge/blob/main/gifs/main_activity_view_v2.gif" style="zoom:50%;" align="center"/>
 
 ##### Movie Details
 
 Shows a view with useful information about the movie.
 
-![](https://github.com/franyanes/alkemy-kotlin-challenge/blob/main/gifs/movie_details_view.gif)
+<img src="https://github.com/franyanes/alkemy-kotlin-challenge/blob/main/gifs/movie_details_view_v2.gif" style="zoom:50%;" align="center"/>
 
 ### Technical Details
