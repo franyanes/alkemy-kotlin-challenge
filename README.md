@@ -1,15 +1,28 @@
-# alkemy-kotlin-challenge
+# Alkemy Kotlin Challenge
 
-### Aclaración
+### Overview
 
-No está terminado.
+This is my take on the [Kotlin Challenge provided by Alkemy](https://drive.google.com/file/d/19sWXyPTBQ-dTeov779GZyid572iu9c0o/view).
 
-La app funciona correctamente pero todavía le falta pulir un par de cosas:
+This app is a simple movie catalog that lets you browse through the most popular movies provided by [TheMovieDataBase API](https://www.themoviedb.org/documentation/api) and pick a choice to look at the movie's details such as rating, release date, and more.
 
-* ~~En la pantalla de *Movie Details*, la UI todavía no está bindeada para mappear los datos que recibe de la API. Lo único bindeado es el título.~~
-* Refactorizar un par de cosas.
-* Hacer correctamente este readme.
+### Screens
 
-La razón por la que ingresé el repo sin terminarlo es porque creí que uds. iban a empezar a corregir a partir del 31.
+##### Popular Movies Catalog
 
-Estos cambios que faltan los voy a hacer antes de que arranque el mes de agosto.
+The list of movies are shown in a card view. Each item on the list shows the title and poster image of a movie.
+
+The user can go up and down in the view when searching. 
+
+To select a movie, simply press on it.
+
+[](github)
+
+##### Movie Details
+
+Shows a view with useful information about the movie.
+
+[](github)
+
+### Technical Details
+
